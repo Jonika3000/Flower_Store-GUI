@@ -12,13 +12,45 @@ namespace Flower_Store
         List<Flower> AllFlowers = new List<Flower>();
         public List<Flower> Sell(int Roza1, int Romashka1, int Tulpan1)
         {
-           
+            List<Flower> all = new List<Flower>();//готовый букет цветов
+            for (int i = 0; i < Roza1; i++)
+            {
+                bool allHas = AllFlowers.Any(s => s.GetType() == typeof(Rose)); //Проверка есть ли в наличии роза
+                if (allHas == true)
+                    all.Add(new Rose());
+
+            }
+            for (int i = 0; i < Romashka1; i++)
+            {
+                bool allHas = AllFlowers.Any(s => s.GetType() == typeof(Chamomile));//Проверка есть ли в наличии ромашка
+                if (allHas == true)
+                    all.Add(new Chamomile());
+            }
+            for (int i = 0; i < Tulpan1; i++)
+            {
+                bool allHas = AllFlowers.Any(s => s.GetType() == typeof(Tulpan));//Проверка есть ли в наличии тюльпан
+                if (allHas == true)
+                    all.Add(new Tulpan());
+            }
+            return all;//возращаем готовый букет 
         }
         public void ShowAll(ListBox l) //показать все цветы в наличии с помощю ListBox
         {
-           
-             
-            
+            for (int i = 0; i < AllFlowers.Count; i++)
+            {
+                if (AllFlowers[i].GetType() == typeof(Chamomile))
+                {
+                    l.Items.Add("Chamomile");
+                }
+                if (AllFlowers[i].GetType() == typeof(Rose))
+                {
+                    l.Items.Add("Rose");
+                }
+                if (AllFlowers[i].GetType() == typeof(Tulpan))
+                {
+                    l.Items.Add("Tulpan");
+                }
+            }
         }
         void DeleteRose()
         {
@@ -99,8 +131,13 @@ namespace Flower_Store
             }
         }
         public void AddFlower(int r, int c , int t)//добавления цветов, принимает количество каждого типа цветка
-        {  
-           
+        {
+            for (int i = 0; i < r; i++)
+                AllFlowers.Add(new Rose());
+            for (int i = 0; i < c; i++)
+                AllFlowers.Add(new Chamomile());
+            for (int i = 0; i < t; i++)
+                AllFlowers.Add(new Tulpan());
         }
     }
 }

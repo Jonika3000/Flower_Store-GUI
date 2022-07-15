@@ -88,7 +88,9 @@ namespace Flower_Store
         }
         void Error (string ex) //errors 
         {
-           
+            label3.Visible = true;
+            label3.Text = ex;
+            this.label3.ForeColor = System.Drawing.Color.Red;
         }
 
         private void button3_Click(object sender, EventArgs e)
